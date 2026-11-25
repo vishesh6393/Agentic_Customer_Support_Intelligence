@@ -1,5 +1,9 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlmodel import Field, SQLModel
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 class Customer(SQLModel, table=True):
@@ -19,7 +23,7 @@ class Order(SQLModel, table=True):
 class Ticket(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     customer_email: str = Field(index=True)
-    category: str  # billing | tech | orders
+    category: str
     message: str
     status: str = "open"
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=utc_now)
