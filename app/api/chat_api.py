@@ -1,9 +1,12 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from pydantic import BaseModel
-from langchain_core.messages import ToolMessage
-from app.agent.agent import build_agent, RISKY_TOOLS
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_core.messages import ToolMessage
+from pydantic import BaseModel
+
+from app.agent.agent import RISKY_TOOLS, build_agent
+
 state = {}
 
 @asynccontextmanager

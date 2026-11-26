@@ -1,5 +1,6 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlmodel import Session, select
+
 from app.db import get_session
 from app.support_api.models import Customer, Order, Ticket
 

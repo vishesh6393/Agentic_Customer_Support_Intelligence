@@ -1,7 +1,9 @@
 import random
+
 from datasets import load_dataset
 from sqlmodel import Session, select
-from app.db import engine, create_tables
+
+from app.db import create_tables, engine
 from app.support_api.models import Customer, Order, Ticket
 
 NAMES = ["Aarav Shah", "Priya Nair", "Rohan Gupta", "Ananya Iyer", "Vikram Rao",

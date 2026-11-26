@@ -1,4 +1,5 @@
 from sqlmodel import Session, SQLModel, create_engine, text
+
 from app.config import get_settings
 
 engine = create_engine(get_settings().database_url, pool_pre_ping=True)
