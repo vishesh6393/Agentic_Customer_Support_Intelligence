@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from langchain_core.messages import ToolMessage
 from app.agent.agent import build_agent, RISKY_TOOLS
-
+from fastapi.middleware.cors import CORSMiddleware
 state = {}
 
 @asynccontextmanager
@@ -13,6 +13,8 @@ async def lifespan(app):
 
 app = FastAPI(title="Support Chat API", lifespan=lifespan)
 
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173"],
+                   allow_methods=["*"], allow_headers=["*"])
 class ChatIn(BaseModel):
     thread_id: str
     message: str
